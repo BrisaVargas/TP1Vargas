@@ -29,16 +29,19 @@ namespace TrabajoPractico1Vargas
 
             try
             {
-                DateTime fechaEnvio = DateTime.Today;
-                listado = listado + "Nickname: "+nick.Text + " - Mail: " + mail.Text + " - Mensaje: " + mensaje.Text + " (Fecha de envío: " + fechaEnvio.ToString("d") + ")\n------------\n";
-                resultado.Text = listado;
-                nick.Text = "";
-                mail.Text = "";
-                mensaje.Text = "";
+                
+                if (nick.Text!="" && mail.Text != "" && mensaje.Text != "" && mail.Text.Contains("@")) {
+                    DateTime fechaEnvio = DateTime.Today;
+                    listado = listado + "Nickname: " + nick.Text + " - Mail: " + mail.Text + " - Mensaje: " + mensaje.Text + " (Fecha de envío: " + fechaEnvio.ToString("d") + ")\n------------\n";
+                    resultado.Text = listado;
+                    nick.Text = "";
+                    mail.Text = "";
+                    mensaje.Text = "";
+                } else { MessageBox.Show("Ingrese valores válidos"); }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ingrese valores");
+                MessageBox.Show("Error");
             }
         }
     }
